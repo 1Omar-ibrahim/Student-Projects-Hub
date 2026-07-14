@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#4F46E5">
+  <title>Student Projects Hub</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="assets/icons/icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/forms.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="logo-link">
+        <img src="assets/logo.svg" alt="Student Projects Hub" class="logo">
+      </a>
+      <nav class="nav-center">
+        <a href="index.html" class="nav-link" data-i18n="nav.home"></a>
+      </nav>
+      <div class="nav-actions">
+        <div class="lang-switcher">
+          <button class="lang-btn" data-lang="ar">AR</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="tr">TR</button>
+        </div>
+        <div id="auth-area">
+          <div class="user-menu" id="user-menu">
+            <img src="" alt="" class="avatar" id="user-avatar">
+            <span class="username" id="user-name"></span>
+            <button class="btn btn-ghost" id="btn-logout" data-i18n="nav.logout"></button>
+          </div>
+        </div>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="container container-sm">
+      <a href="index.html" class="back-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M19 12H5M12 5l-7 7 7 7"/>
+        </svg>
+        <span data-i18n="common.back"></span>
+      </a>
+
+      <div class="form-page">
+        <h1 class="form-title" id="form-title" data-i18n="publish.title"></h1>
+
+        <div class="alert alert-error hidden" id="form-error"></div>
+        <div class="alert alert-success hidden" id="form-success"></div>
+
+        <form class="project-form" id="project-form" novalidate>
+          <div class="form-group">
+            <label for="title" data-i18n="publish.field_title"></label>
+            <input type="text" id="title" name="title" class="form-input" data-i18n-placeholder="publish.field_title_placeholder" required>
+            <span class="field-error hidden" id="title-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="description" data-i18n="publish.field_desc"></label>
+            <textarea id="description" name="description" class="form-input form-textarea" data-i18n-placeholder="publish.field_desc_placeholder" rows="5" required></textarea>
+            <span class="field-error hidden" id="description-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="github_url" data-i18n="publish.field_github"></label>
+            <input type="url" id="github_url" name="github_url" class="form-input" placeholder="https://github.com/username/repo">
+          </div>
+
+          <div class="form-group">
+            <label for="demo_url" data-i18n="publish.field_demo"></label>
+            <input type="url" id="demo_url" name="demo_url" class="form-input" placeholder="https://myproject.com">
+          </div>
+
+          <div class="form-group">
+            <label for="technologies" data-i18n="publish.field_tech"></label>
+            <input type="text" id="technologies" name="technologies" class="form-input" data-i18n-placeholder="publish.field_tech_placeholder">
+          </div>
+
+          <div class="form-group">
+            <label for="image" data-i18n="publish.field_image"></label>
+            <div class="file-upload" id="file-upload-area">
+              <input type="file" id="image" name="image" class="file-input" accept="image/*">
+              <div class="file-upload-ui">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+                </svg>
+                <p data-i18n="publish.upload_hint"></p>
+              </div>
+              <img src="" alt="" class="preview-img hidden" id="image-preview">
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <a href="index.html" class="btn btn-ghost" data-i18n="common.cancel"></a>
+            <button type="submit" class="btn btn-primary" id="btn-submit">
+              <span data-i18n="publish.submit"></span>
+              <span class="spinner hidden" id="submit-spinner"></span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <a href="index.html" class="logo-link">
+        <img src="assets/logo.svg" alt="Student Projects Hub" class="logo logo-sm">
+      </a>
+      <p class="footer-copy" data-i18n="footer.copy"></p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script type="module" src="js/supabase.js"></script>
+  <script type="module" src="js/i18n.js"></script>
+  <script type="module" src="js/publish.js"></script>
+</body>
+</html>

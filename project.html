@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#4F46E5">
+  <title>Student Projects Hub</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="assets/icons/icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/cards.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="logo-link">
+        <img src="assets/logo.svg" alt="Student Projects Hub" class="logo">
+      </a>
+      <nav class="nav-center">
+        <a href="index.html" class="nav-link" data-i18n="nav.home"></a>
+      </nav>
+      <div class="nav-actions">
+        <div class="lang-switcher">
+          <button class="lang-btn" data-lang="ar">AR</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="tr">TR</button>
+        </div>
+        <div id="auth-area">
+          <button class="btn btn-primary" id="btn-login" data-i18n="nav.login"></button>
+          <div class="user-menu hidden" id="user-menu">
+            <img src="" alt="" class="avatar" id="user-avatar">
+            <span class="username" id="user-name"></span>
+            <a href="publish.html" class="btn btn-secondary" data-i18n="nav.publish"></a>
+            <a href="admin.html" class="btn btn-ghost admin-link hidden" id="admin-link" data-i18n="nav.admin"></a>
+            <button class="btn btn-ghost" id="btn-logout" data-i18n="nav.logout"></button>
+          </div>
+        </div>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="container">
+      <a href="index.html" class="back-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M19 12H5M12 5l-7 7 7 7"/>
+        </svg>
+        <span data-i18n="common.back"></span>
+      </a>
+
+      <div class="project-detail" id="project-detail">
+        <div class="skeleton-detail">
+          <div class="skeleton-img"></div>
+          <div class="skeleton-content">
+            <div class="skeleton-line w-60"></div>
+            <div class="skeleton-line w-40"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line w-80"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="error-state hidden" id="error-state">
+        <p data-i18n="project.not_found"></p>
+        <a href="index.html" class="btn btn-primary" data-i18n="common.back_home"></a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <a href="index.html" class="logo-link">
+        <img src="assets/logo.svg" alt="Student Projects Hub" class="logo logo-sm">
+      </a>
+      <p class="footer-copy" data-i18n="footer.copy"></p>
+    </div>
+  </footer>
+
+  <div class="modal-overlay hidden" id="modal-overlay">
+    <div class="modal" id="login-modal">
+      <button class="modal-close" id="modal-close">&times;</button>
+      <h2 data-i18n="auth.title"></h2>
+      <p data-i18n="auth.subtitle"></p>
+      <div class="auth-buttons">
+        <button class="btn btn-oauth btn-github" id="btn-github">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          <span data-i18n="auth.github"></span>
+        </button>
+        <button class="btn btn-oauth btn-google" id="btn-google">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+          </svg>
+          <span data-i18n="auth.google"></span>
+        </button>
+      </div>
+      <p class="auth-note" data-i18n="auth.note"></p>
+    </div>
+  </div>
+
+  <div class="modal-overlay hidden" id="confirm-overlay">
+    <div class="modal modal-sm">
+      <h3 data-i18n="common.confirm_delete"></h3>
+      <p data-i18n="common.confirm_delete_msg"></p>
+      <div class="modal-actions">
+        <button class="btn btn-ghost" id="btn-cancel-delete" data-i18n="common.cancel"></button>
+        <button class="btn btn-danger" id="btn-confirm-delete" data-i18n="common.delete"></button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fingerprintjs/fingerprintjs@4/dist/fp.min.js"></script>
+  <script type="module" src="js/supabase.js"></script>
+  <script type="module" src="js/i18n.js"></script>
+  <script type="module" src="js/project.js"></script>
+</body>
+</html>
